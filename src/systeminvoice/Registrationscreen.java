@@ -8,6 +8,9 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
+
+
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -23,22 +26,20 @@ public class Registrationscreen extends javax.swing.JInternalFrame {
     /**
      * Creates new form Registrationscreen
      */
+     Connection con;
     public Registrationscreen() {
-        initComponents();
-        Connection con;
+     initComponents();
+    
+    
+                                      
+        
         try {
-            Class.forName("com.mysql.jdbg.Driver");
+            Class.forName("com.mysql.cj.jdbc.Driver");
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(Registrationscreen.class.getName()).log(Level.SEVERE, null, ex);
         }
-        try {
-            con =DriverManager.getConnection("jdbc:mysql://localhost/hospitslSystem", "root","");
-            Statement stmt = con.createStatement();
-            stmt.executeUpdate("INSERT INTO clients VALUES('7767', 'CESAR', 'PEREZ', '1245', 'M')";
-        } catch (SQLException ex) {
-            Logger.getLogger(Registrationscreen.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        JOptionPane.showMessageDialog(null,"No se puede conectar");
+       
+       
     }
 
     /**
@@ -50,41 +51,73 @@ public class Registrationscreen extends javax.swing.JInternalFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        OneGrup = new javax.swing.ButtonGroup();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jEditorPane1 = new javax.swing.JEditorPane();
         jLabel1 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
-        jTextField2 = new javax.swing.JTextField();
-        jTextField3 = new javax.swing.JTextField();
-        jRadioButton1 = new javax.swing.JRadioButton();
-        jRadioButton3 = new javax.swing.JRadioButton();
+        TfDocument = new javax.swing.JTextField();
+        Tfnames = new javax.swing.JTextField();
+        TfLastnames = new javax.swing.JTextField();
+        rbTable = new javax.swing.JRadioButton();
+        rbPortable = new javax.swing.JRadioButton();
         jLabel2 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
+        TfCodeProduct = new javax.swing.JTextField();
+
+        jScrollPane1.setViewportView(jEditorPane1);
 
         jLabel1.setText("Customer Registration");
 
-        jTextField1.setText("Enter Document Number");
-        jTextField1.addActionListener(new java.awt.event.ActionListener() {
+        TfDocument.setText("Enter Document Number");
+        TfDocument.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                TfDocumentFocusGained(evt);
+            }
+        });
+        TfDocument.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField1ActionPerformed(evt);
+                TfDocumentActionPerformed(evt);
             }
         });
 
-        jTextField2.setText("Enter Names");
-        jTextField2.addActionListener(new java.awt.event.ActionListener() {
+        Tfnames.setText("Enter Names");
+        Tfnames.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                TfnamesFocusGained(evt);
+            }
+        });
+        Tfnames.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField2ActionPerformed(evt);
+                TfnamesActionPerformed(evt);
             }
         });
 
-        jTextField3.setText("Enter last names");
-
-        jRadioButton1.setText("Table");
-        jRadioButton1.addActionListener(new java.awt.event.ActionListener() {
+        TfLastnames.setText("Enter last names");
+        TfLastnames.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                TfLastnamesFocusGained(evt);
+            }
+        });
+        TfLastnames.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jRadioButton1ActionPerformed(evt);
+                TfLastnamesActionPerformed(evt);
             }
         });
 
-        jRadioButton3.setText("Portable");
+        OneGrup.add(rbTable);
+        rbTable.setText("Table");
+        rbTable.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                rbTableActionPerformed(evt);
+            }
+        });
+
+        rbPortable.setText("Portable");
+        rbPortable.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                rbPortableActionPerformed(evt);
+            }
+        });
 
         jLabel2.setText("What product");
 
@@ -95,85 +128,144 @@ public class Registrationscreen extends javax.swing.JInternalFrame {
             }
         });
 
+        TfCodeProduct.setText("Code Product");
+        TfCodeProduct.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                TfCodeProductFocusGained(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(0, 109, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(134, 134, 134)
-                        .addComponent(jLabel1))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(43, 43, 43)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(33, 33, 33)
-                                .addComponent(jRadioButton1)
-                                .addGap(78, 78, 78)
-                                .addComponent(jRadioButton3))
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(jTextField1, javax.swing.GroupLayout.DEFAULT_SIZE, 216, Short.MAX_VALUE)
-                                .addComponent(jTextField2)
-                                .addComponent(jTextField3))))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(134, 134, 134)
-                        .addComponent(jLabel2))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(144, 144, 144)
-                        .addComponent(jButton1)))
-                .addContainerGap(125, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(TfCodeProduct, javax.swing.GroupLayout.PREFERRED_SIZE, 216, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(TfLastnames, javax.swing.GroupLayout.PREFERRED_SIZE, 216, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(Tfnames, javax.swing.GroupLayout.PREFERRED_SIZE, 216, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(TfDocument, javax.swing.GroupLayout.PREFERRED_SIZE, 216, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(94, 94, 94))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(jLabel1)
+                        .addGap(153, 153, 153))))
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(rbTable)
+                .addGap(18, 18, 18)
+                .addComponent(rbPortable)
+                .addGap(144, 144, 144))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(175, 175, 175)
+                .addComponent(jLabel2)
+                .addGap(0, 0, Short.MAX_VALUE))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(169, 169, 169)
+                .addComponent(jButton1)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
                 .addComponent(jLabel1)
+                .addGap(30, 30, 30)
+                .addComponent(TfDocument, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(17, 17, 17)
+                .addComponent(Tfnames, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(TfLastnames, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(TfCodeProduct, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jLabel2)
-                .addGap(1, 1, 1)
+                .addGap(4, 4, 4)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jRadioButton1)
-                    .addComponent(jRadioButton3))
+                    .addComponent(rbTable)
+                    .addComponent(rbPortable))
                 .addGap(18, 18, 18)
                 .addComponent(jButton1)
-                .addContainerGap(36, Short.MAX_VALUE))
+                .addContainerGap(46, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
+    private void TfDocumentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TfDocumentActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField1ActionPerformed
+    }//GEN-LAST:event_TfDocumentActionPerformed
 
-    private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
+    private void TfnamesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TfnamesActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField2ActionPerformed
+    }//GEN-LAST:event_TfnamesActionPerformed
 
-    private void jRadioButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jRadioButton1ActionPerformed
+    private void rbTableActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbTableActionPerformed
+         // TODO add your handling code here:
+    }//GEN-LAST:event_rbTableActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
+        String type="";
+        
+        if(rbTable.isSelected()){
+            type="Table";
+        }if(rbPortable.isSelected()){
+            type="Portable";
+        }
+         try {
+            con =DriverManager.getConnection("jdbc:mysql://localhost/hospitalsystem","root", "");
+            Statement stmt = con.createStatement();
+            stmt.executeUpdate ("INSERT INTO clients VALUES('"+TfDocument.getText()+"', '"+Tfnames.getText()+"', '"+TfLastnames.getText()+"', '"+TfCodeProduct.getText()+"', '"+type+"')");
+        } catch (SQLException ex) {
+            Logger.getLogger(Registrationscreen.class.getName()).log(Level.SEVERE, null, ex);
+             JOptionPane.showMessageDialog(null,"No se puede conectar");
+        }
+          JOptionPane.showMessageDialog(null,"The data is already registered");
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void TfLastnamesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TfLastnamesActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_TfLastnamesActionPerformed
+
+    private void rbPortableActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbPortableActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_rbPortableActionPerformed
+
+    private void TfDocumentFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_TfDocumentFocusGained
+        // TODO add your handling code here:
+       TfDocument.setText("");
+    }//GEN-LAST:event_TfDocumentFocusGained
+
+    private void TfnamesFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_TfnamesFocusGained
+        // TODO add your handling code here:
+        Tfnames.setText("");
+    }//GEN-LAST:event_TfnamesFocusGained
+
+    private void TfLastnamesFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_TfLastnamesFocusGained
+        // TODO add your handling code here:
+        TfLastnames.setText("");
+    }//GEN-LAST:event_TfLastnamesFocusGained
+
+    private void TfCodeProductFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_TfCodeProductFocusGained
+        // TODO add your handling code here:
+        TfCodeProduct.setText("");
+    }//GEN-LAST:event_TfCodeProductFocusGained
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.ButtonGroup OneGrup;
+    private javax.swing.JTextField TfCodeProduct;
+    private javax.swing.JTextField TfDocument;
+    private javax.swing.JTextField TfLastnames;
+    private javax.swing.JTextField Tfnames;
     private javax.swing.JButton jButton1;
+    private javax.swing.JEditorPane jEditorPane1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JRadioButton jRadioButton1;
-    private javax.swing.JRadioButton jRadioButton3;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JRadioButton rbPortable;
+    private javax.swing.JRadioButton rbTable;
     // End of variables declaration//GEN-END:variables
 }
